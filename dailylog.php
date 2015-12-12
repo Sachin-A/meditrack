@@ -7,6 +7,8 @@
 		<link href="css/landing-page.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
 		<script src="js/jquery.js"></script>
 		<script src="table/build/table-edits.min.js"></script>
 		<script src="js/bootstrap.js"></script>
@@ -35,9 +37,9 @@
 		});
 		</script>
 	</head>
-	<body overflow="hidden" class="text-center";>
+	<body class="text-center";>
 						<p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample">
-						 <i class="fa fa-heart"> ADD DAILY LOG </i>
+						 <i class="fa fa-calendar faa-float faa-fast animated"></i> ADD DAILY LOG
 						 </a></p>
 						 <div class="collapse" id="form" aria-expanded="false">
 							<form id="form" method="post" action="register.php">

@@ -62,6 +62,8 @@ if(isset($_POST['submit']))
 		<link href="css/landing-page.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
 	</head>
@@ -71,9 +73,9 @@ if(isset($_POST['submit']))
 				<div class="row">
 					<div class="col-lg-12">
 						<div id="index" class="intro-message">
-							<h2>MEDI TRACK</h2>
+							<h1><i class="fa fa-heart faa-pulse faa-fast animated"></i> MEDI TRACK</h1>
 							<hr class="intro-divider">
-							<a class="btn btn-primary" role="button" data-toggle="collapse" href="#formcollapse" aria-expanded="false" aria-controls="formcollapse"><i class="fa fa-heart"> ADD DOCTORS/TRACKERS </i></a>
+							<a class="btn btn-primary" role="button" data-toggle="collapse" href="#formcollapse" aria-expanded="false" aria-controls="formcollapse"><i class="fa fa-user-md faa-tada animated"></i>&nbsp;&nbsp ADD DOCTORS/TRACKERS &nbsp;&nbsp<i class="fa fa-user faa-tada animated"></i></a>
 							<div class="collapse" id="formcollapse" aria-expanded="false">
 								<form id="form" method="post" action="settings.php">
 								<div>

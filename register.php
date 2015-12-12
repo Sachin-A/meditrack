@@ -27,13 +27,15 @@ if(isset($_POST['submit'])){
 		<link href="css/landing-page.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-		<script src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
 		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
 	</head>
 
-	<body style="overflow:hidden">
+	<body>
 			<div id="login" class="text-center">
-			<h2>REGISTER</h2>
+			<h2><i class="fa fa-user faa-float faa-fast animated"></i> REGISTER </h2>
 			<form id="form" method="post" action="register.php">
 			<div class="form-group">
 				<label>
@@ -89,6 +91,7 @@ if(isset($_POST['submit'])){
 			</div>
 				<button name="submit" type="submit" class="btn btn-primary" id="submit">Submit</button>
 			</form>
+			</br>
 			<span>Please click <a href="login.php">Here</a> to login</span>
 			</div>
 	</body>
