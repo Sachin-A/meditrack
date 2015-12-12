@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="bootstrap-3.3.6-dist/bootstrap-3.3.6-dist/css/bootstrap.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="bootstrap-3.3.6-dist/bootstrap-3.3.6-dist/css/bootstrap-theme.css" type="text/css" media="screen" />
         <script src="bootstrap-3.3.6-dist/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+		<script src="js/1.7.2.jquery.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans|Baumans' rel='stylesheet' type='text/css'>
 	</head>
 
