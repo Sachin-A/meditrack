@@ -7,9 +7,8 @@ A webapp to monitor patient daily log, set reminders and view patient history. P
 * user index  
 * doctor index  ,Trackers page  
 * forgot password ?
-* Logout
-* request
 * daily log
 * patient history
 * reminders
 * emergency
+* medical api so that patients , when they hover over the medicines , an api to provide their details

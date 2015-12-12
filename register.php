@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
 	$email = $_POST['email'];
 	$addr = $_POST['addr'];
 	$type = $_POST['type'];
-	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
+	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email`,`doctors` ,`type`,`patients` ,`u_trackers`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' ,'', {$type} ,'' ,'');";
 
 
 	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;

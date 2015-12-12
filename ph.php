@@ -1,22 +1,30 @@
 <?php 
 include 'db_connect.php';
-if(isset($_POST['submit'])){
-	$uname = $_POST['uname'];
-	$fname = $_POST['fname'];
-	$pwd = sha1($_POST['pwd']);
-	$dob = $_POST['dt'];
-	$ph_no = $_POST['ph'];
-	$email = $_POST['email'];
-	$addr = $_POST['addr'];
-	$type = $_POST['type'];
-	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
+session_start();
+
+if(!isset($_SESSION['u_i']))
+	header("Location:/meditrack/land.html");
 
 
-	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;
-	if(mysqli_error($h)=='')
-	echo 'Thank you for registering ! Please Click <a href="login.php">Here</a> to login';	
+if(isset($_POST['submit']))
+{
+	$fname = mysqli_real_escape_string($h , $_POST['fname']);
+	$date = mysqli_real_escape_string($h , $_POST['dt'] );
+
+	$s_level = mysqli_real_escape_string($h ,$_POST['sl']);
+	$bp = mysqli_real_escape_string($h , $_POST['bp']);
+	$d = mysqli_real_escape_string($h ,$_POST['disease']);
+	$symptoms = mysqli_real_escape_string($h , $_POST['symp']);
+	$id=$_SESSION['u_i'];
+
+	$q_uname = "SELECT `uname` , `imgs_uploaded` from user_details where u_id=$id";
+	$res = mysqli_query($h , $q_uname);
+	$arr = mysqli_fetch_array($res);
+	$filename = $arr['uname'].'_'.(string)($arr['imgs_uploaded']+1);
+
+	move_uploaded_file($_FILES['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/meditrack/uploads/'.$filename);
+	echo "Done uploading successfully!";
 }
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -35,7 +43,7 @@ if(isset($_POST['submit'])){
 			<div id="login" class="text-center">
 			<a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-heart"> ADD PATIENT HISTORY </i></a>
 			<div class="collapse" id="form" aria-expanded="false">
-			<form id="form" method="post" action="register.php">
+			<form id="form" method="post" action="ph.php">
 			<div class="form-group">
 				<label>
 					<span>Name: </span>
@@ -51,29 +59,29 @@ if(isset($_POST['submit'])){
 			<div class="form-group">
 				<label>
 					<span>Sugar Level: </span>
-					<input type="number" name="ph" class="form-control" tabindex="3" required>
+					<input type="number" name="sl" class="form-control" tabindex="3" required>
 				</label>
 			</div>
 			<div class="form-group">
 				<label>
 					<span>BP Level</span>
-					<input type="email" name="email" class="form-control" tabindex="6" required>
+					<input type="number" name="bp" class="form-control" tabindex="6" required>
 				</label>
 			</div>
 			<div class="form-group">
 				<label>
 					<span>Disease: </span>
-					<textarea name="addr" class="form-control" tabindex="7" required></textarea>
+					<textarea name="disease" class="form-control" tabindex="7" required></textarea>
 				</label>
 			</div>
 			<div class="form-group">
 				<label>
 					<span>Symptoms: </span>
-					<textarea name="addr" class="form-control" tabindex="7" required></textarea>
+					<textarea name="symp" class="form-control" tabindex="7" required></textarea>
 				</label>
 			</div>
 			<label class="file">
-			<input type="file" id="file">
+			<input type="file" id="file" name="file_upload">
 			<span class="file-custom"></span>
 			</label>
 				<button name="submit" type="submit" class="btn btn-primary" id="submit">Submit</button>

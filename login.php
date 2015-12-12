@@ -19,7 +19,7 @@ if(isset($_POST['uname'])  && isset($_POST['pwd']))
 	else{
 		header("Location:/meditrack");
 		$arr = mysqli_fetch_array($res);
-		$_SESSION['u_hash']=sha1($arr['u_id']);
+		$_SESSION['u_i']=$arr['u_id'];
 	}
 }
 else{

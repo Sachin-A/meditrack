@@ -1,9 +1,13 @@
 <?php 
 session_start();
-if(!isset($_SESSION['u_hash']))
+if(!isset($_SESSION['u_i']))
 	header("Location:/meditrack/land.html");
 
-
+if(isset($_GET['logout']))
+{
+	unset($_SESSION['u_i']);
+	header("Location:/meditrack/land.html");
+}
 ?>
 <!DOCTYPE HTML>
 <html>
