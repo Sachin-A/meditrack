@@ -1,6 +1,7 @@
 <?php
 include 'db_connect.php';
 
+session_start();
 if(isset($_POST['submit'])){ 
 if(isset($_POST['uname'])  && isset($_POST['pwd']))
 {  
@@ -14,6 +15,11 @@ if(isset($_POST['uname'])  && isset($_POST['pwd']))
 
     if(!$rows)
     	$err_cred = "Invalid Credentials .";
+    else {
+    	header("Location:/meditrack");
+    	$arr = mysqli_fetch_array($res);    	
+    	$_SESSION['u_hash'] = sha1($arr['u_id']);
+    }
 }
 else{
 	if (isset($_POST['uname'])!='') {
@@ -64,9 +70,6 @@ else{
 			<div>
 				<button name="submit" type="submit" id="submit" >Submit</button>
 				<span class="error"><?php if(isset($err_cred)) echo $err_cred;?></span>
-			</div>
-			<div>
-				<button name="submit" type="submit" id="submit">Submit</button>
 			</div>
 			</form>
 			</div>

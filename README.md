@@ -6,3 +6,5 @@ A webapp to monitor patient daily log, set reminders and view patient history. P
 * Validate register page properly  
 * user index  
 * doctor index  ,Trackers page  
+* forgot password ?
+* Logout

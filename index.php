@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(!isset($_SESSION['u_hash']))
+	header("Location:/meditrack/land.html");
+
+
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
