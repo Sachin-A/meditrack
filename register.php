@@ -11,8 +11,10 @@ if(isset($_POST['submit'])){
 	$type = $_POST['type'];
 	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
 
+
 	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;
-		
+	if(mysqli_error($h)=='')
+	echo 'Thank you for registering ! Please Click <a href="login.php">Here</a> to login';	
 }
 
 ?>
@@ -87,6 +89,7 @@ if(isset($_POST['submit'])){
 				<button name="submit" type="submit" id="submit">Submit</button>
 			</div>
 			</form>
+			<span>Please click <a href="login.php">Here</a> to login</span>
 			</div>
 	</body>
 </html>
