@@ -34,7 +34,7 @@ if(isset($_GET['logout']))
 							<p class="container">View/edit patient history, log/monitor daily schedule and set reminders for daily tasks!</p>
 							<ul class="list-inline">
 								<li>
-									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-heart"> PATIENT HISTORY </i></span></a>
+									<a href="ph.php" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-heart"> PATIENT HISTORY </i></span></a>
 								</li>
 								<li>
 									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-list-alt"> DAILY LOG </i></span></a>
