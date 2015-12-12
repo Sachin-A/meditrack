@@ -17,7 +17,7 @@ if(isset($_POST['uname'])  && isset($_POST['pwd']))
     	$err_cred = "Invalid Credentials .";
     else {
     	header("Location:/meditrack");
-    	$arr = mysqli_fetch_array($res);    	
+    	$arr = mysqli_fetch_array($res);
     	$_SESSION['u_hash'] = sha1($arr['u_id']);
     }
 }
