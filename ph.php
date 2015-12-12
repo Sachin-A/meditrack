@@ -1,24 +1,49 @@
-<!--<?php 
-   include 'db_connect.php';
-   if(isset($_POST['submit'])){
-   	$uname = $_POST['uname'];
-   	$fname = $_POST['fname'];
-   	$pwd = sha1($_POST['pwd']);
-   	$dob = $_POST['dt'];
-   	$ph_no = $_POST['ph'];
-   	$email = $_POST['email'];
-   	$addr = $_POST['addr'];
-   	$type = $_POST['type'];
-   	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
-   
-   
-   	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;
-   	if(mysqli_error($h)=='')
-   	echo 'Thank you for registering ! Please Click 
-   <a href="login.php">Here</a> to login';	
-   }
-   
-   ?>-->
+<?php 
+include 'db_connect.php';
+session_start();
+
+$id=$_SESSION['u_i'];
+	$q = "SELECT `type` from user_details where u_id = $id;";
+	$r = mysqli_query($h,$q) or die("Error....");
+	$arr_T = mysqli_fetch_array($r);
+	$type = $arr_T['type'];
+if(!isset($_SESSION['u_i']))
+	header("Location:/meditrack/land.html");
+
+
+if(isset($_POST['submit']))
+{
+	$uname = mysqli_real_escape_string($h , $_POST['uname']);
+	$date = mysqli_real_escape_string($h , $_POST['dt'] );
+
+	$s_level = mysqli_real_escape_string($h ,$_POST['sl']);
+	$bp = mysqli_real_escape_string($h , $_POST['bp']);
+	$d = mysqli_real_escape_string($h ,$_POST['disease_desc']);
+	$symptoms = mysqli_real_escape_string($h , $_POST['symp']);
+	$cmt = mysqli_real_escape_string($h , $_POST['cmts']);
+
+	
+	$q_uname = "SELECT `u_id`  , `imgs_uploaded` from user_details where uname='$uname';";
+	$res = mysqli_query($h , $q_uname);
+	$arr = mysqli_fetch_array($res);
+	$filename = $uname.'_'.(string)($arr['imgs_uploaded']+1).'.png';
+	$imgs = $arr['imgs_uploaded']+1;
+
+	$query_img = "UPDATE user_details set imgs_uploaded=$imgs where uname='$uname';";
+	$res_img = mysqli_query($h,$query_img) or die("error.."); 
+
+	$p_id = mysqli_real_escape_string($h,$arr['u_id']);
+	
+	$query = "INSERT INTO patient_history values($p_id , $id , NOW(),$s_level , $bp , '$d' , '$symptoms' ,'$cmt' , $imgs);";
+	$res = mysqli_query($h,$query);
+	$path = $_SERVER['DOCUMENT_ROOT'].'/meditrack/uploads/'.$filename;
+	
+	move_uploaded_file($_FILES['upload_file']['tmp_name'], $path);
+
+	echo "Done uploading successfully!";
+}
+?>
+
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -99,12 +124,13 @@
 	  </script>
    </head>
    <body>
-		<div id="login" class="text-center">
+      <div id="login" class="text-center">
+         <?php if($type!=3){ ?>
          <p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample">
          <i class="fa fa-heart"> ADD PATIENT HISTORY </i>
          </a></p>
          <div class="collapse" id="form" aria-expanded="false">
-            <form id="form" method="post" action="register.php">
+            <form id="form" method="post" action="ph.php" enctype="multipart/form-data">
                <div class="form-group">
                   <label>
                   <span>Username: </span>
@@ -131,29 +157,30 @@
                </div>
                <div class="form-group">
                   <label>
-                  <span>Disease: </span>
-                  <textarea name="dis" class="form-control" tabindex="7" required></textarea>
+                  <span>Disease Description: </span>
+                  <textarea name="disease_desc" class="form-control" tabindex="7" required></textarea>
                   </label>
                </div>
                <div class="form-group">
                   <label>
                   <span>Symptoms: </span>
-                  <textarea name="symp" class="form-control" tabindex="7" required></textarea>
+                  <textarea name="symp" class="form-control" tabindex="8" required></textarea>
                   </label>
                </div>
-			   <div class="form-group">
+               <div class="form-group">
                   <label>
-                  <span>Comment: </span>
-                  <textarea name="comm" class="form-control" tabindex="7" required></textarea>
+                  <span>Comments: </span>
+                  <textarea name="cmts" class="form-control" tabindex="9" required></textarea>
                   </label>
                </div>
                <label class="file">
-               <input type="file" id="file">
+               <input type="file" id="file" name="upload_file" accept="image/gif,image/jpeg,image/jpg,image/png">
                <span class="file-custom"></span>
                </label>
                <button name="submit" type="submit" class="btn btn-primary" id="submit">Submit</button>
             </form>
          </div>
+         <?php }?>
 		 </br>
          <ul class="nav nav-pills nav-justified">
             <li role="presentation" class="active">

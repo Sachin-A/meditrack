@@ -1,3 +1,58 @@
+<?php
+include 'db_connect.php';
+session_start();
+include 'chck.php';
+if(isset($_POST['submit']))
+{
+	if($_POST['uname']!='')
+	{	
+
+		$uname = mysqli_real_escape_string($h ,$_POST['uname']);
+		$type = mysqli_real_escape_string($h ,$_POST['type']);
+		$query1	= "SELECT `u_id` from user_details where uname='$uname' and type = $type;";
+		$res1= mysqli_query($h,$query1) or die("Error");
+		$rows1 = mysqli_num_rows($res1);
+		$arr = mysqli_fetch_array($res1);
+		$user = $_SESSION['u_i'];
+				
+
+		if($rows1!=0)
+		{	
+			
+			$uid=$arr['u_id'];
+			if(chck($uid , $_POST['type'] , $user , $h)==1)
+			{
+				echo "<span style='font-size:20px;color:red;font-weight:bold;'>This person already tracks you</span>";
+				
+				
+			}
+			
+			else				
+				$person = ($type==2)?"doctors":"u_trackers";
+		
+		}
+		
+		else
+			{
+				echo "Please enter the username of a valid doctor or a tracker";
+			}
+			
+		if(isset($person))
+			{	
+				$query2 = "UPDATE user_details SET $person=CONCAT($person,'$uid".";') WHERE u_id=$user;";
+				$query3 = "UPDATE user_details SET patients = CONCAT(patients ,'$user".";') WHERE u_id=$uid;";
+				$res2= mysqli_query($h,$query2) or die("Error in query ...".mysqli_error($h));
+				$res3=mysqli_query($h,$query3) or die("Error in Query..");
+				echo "You have successfully added ".$uname." to track you !";
+			}	
+		}
+       else 
+       	echo "Please enter in a proper username.";
+	}
+	
+
+
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -10,8 +65,7 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
 	</head>
-
-	<body overflow="hidden">
+	<body style="overflow:hidden;">
 		<div class="intro-header">
 			<div class="container">
 				<div class="row">
@@ -47,5 +101,6 @@
 				</div>
 			</div>
 		</div>	
+		
 	</body>
 </html>
