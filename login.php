@@ -9,7 +9,7 @@ if(isset($_POST['uname'])  && isset($_POST['pwd']))
 	$uname = mysqli_real_escape_string($h , $_POST['uname']);
 	$pwd = sha1(mysqli_real_escape_string($h , $_POST['pwd']));
 
-	$query = "SELECT `u_id` from user_details where `uname`='$uname' AND `pwd`='$pwd';";
+	$query = "SELECT `u_id` , `type` from user_details where `uname`='$uname' AND `pwd`='$pwd';";
 	$res=mysqli_query($h , $query) or die("Error ...");
     $rows = mysqli_num_rows($res);
 
