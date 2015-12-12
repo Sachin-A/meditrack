@@ -1,5 +1,5 @@
 <?php 
 
-$h = mysqli_connect("localhost" , "root" ,"Lordsvn_97" ,"meditrack") or die("Error in connection...");
+$h = mysqli_connect("localhost" , "root" ,"" ,"meditrack") or die("Error in connection...");
 
 ?>

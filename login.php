@@ -15,11 +15,12 @@ if(isset($_POST['uname'])  && isset($_POST['pwd']))
 
     if(!$rows)
     	$err_cred = "Invalid Credentials .";
-    else {
-    	header("Location:/meditrack");
-    	$arr = mysqli_fetch_array($res);
-    	$_SESSION['u_hash'] = sha1($arr['u_id']);
-    }
+
+	else{
+		header("Location:/meditrack");
+		$arr = mysqli_fetch_array($res);
+		$_SESSION['u_hash']=sha1($arr['u_id']);
+	}
 }
 else{
 	if (isset($_POST['uname'])!='') {
@@ -49,18 +50,18 @@ else{
 		<script src="js/jquery.js"></script>
 	</head>
 
-	<body>
+	<body style="overflow:hidden">
 			<div id="login" class="text-center">
 			<h2>LOGIN</h2>
 			<form id="form" action="login.php" method="post"> 
-			<div>
+			<div class="form-group">
 				<label>
 					<span>Username: </span>
 					<input placeholder="Please enter your username" type="text" name="uname" tabindex="1" autofocus required>
 					<span class="error"><?php if(isset($err_uname)) echo $err_uname;?></span>
 				</label>
 			</div>
-			<div>
+			<div class="form-group">
 				<label>
 					<span>Password: </span>
 					<input placeholder="Please enter your password" type="password" name="pwd" tabindex="2" required>
@@ -68,10 +69,11 @@ else{
 				</label>
 			</div>
 			<div>
-				<button name="submit" type="submit" id="submit" >Submit</button>
+				<button name="submit" type="submit" id="submit" class="btn btn-primary">Submit</button>
 				<span class="error"><?php if(isset($err_cred)) echo $err_cred;?></span>
 			</div>
 			</form>
+			<span>Please click <a href="register.php">Here</a> to register</span>
 			</div>
 	</body>
 </html>
