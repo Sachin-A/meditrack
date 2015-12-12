@@ -11,7 +11,6 @@ if(isset($_POST['submit'])){
 	$type = $_POST['type'];
 	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
 
-	echo $query;	
 	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;
 		
 }
