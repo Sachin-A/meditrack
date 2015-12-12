@@ -12,17 +12,34 @@
 		<script src="js/jquery-2.1.1.min.js"></script>
 	</head>
 
-	<body>
-			<div id="index" class="text-center">
-			<h2>MEDI TRACK</h2>
-			<a href="#" style="float:left"><i class="fa fa-cog">SETTINGS</i></a>
-			<p class="container">View/edit patient history, log/monitor daily schedule and set reminders for daily tasks!</p>
-			<p class="container">
-				<a href="#"><i class="fa fa-heart"> PATIENT HISTORY </i></a>
-				<a href="#"><i class="fa fa-list-alt"> DAILY LOG </i></a>
-				<a href="#"><i class="fa fa-tasks"> REMINDERS </i></a>
-				<a href="#"><i class="fa fa-ambulance"> EMERGENCY </i></a>
-			</p>
+	<body style="overflow:hidden">
+			<div class="intro-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div id="index" class="intro-message">
+							<h2>MEDI TRACK</h2>
+							<hr class="intro-divider">
+							<a href="settings.php" class="btn btn-default btn-lg" style="float:left"><i class="fa fa-cog">SETTINGS</i></a>
+							<p class="container">View/edit patient history, log/monitor daily schedule and set reminders for daily tasks!</p>
+							<ul class="list-inline">
+								<li>
+									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-heart"> PATIENT HISTORY </i></span></a>
+								</li>
+								<li>
+									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-list-alt"> DAILY LOG </i></span></a>
+								</li>
+								<li>
+									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-tasks"> REMINDERS </i></span></a>
+								</li>
+								<li>
+									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-ambulance"> EMERGENCY </i></span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>	
 	</body>
 </html>
