@@ -1,3 +1,35 @@
+<?php
+include 'db_connect.php';
+
+if(isset($_POST['submit'])){ 
+if(isset($_POST['uname'])  && isset($_POST['pwd']))
+{  
+	if($_POST['uname']!='' && $_POST['pwd']!=''){
+	$uname = mysqli_real_escape_string($h , $_POST['uname']);
+	$pwd = mysqli_real_escape_string($h , $_POST['pwd']);
+
+	$query = "SELECT `u_id` from user_details where `uname`='$uname' AND `pwd`='$pwd';";
+	$res=mysqli_query($h , $query) or die("Error ...");
+    $rows = mysqli_num_rows($res);
+
+    if(!$rows)
+    	$err_cred = "Invalid Credentials .";
+}
+else{
+	if (isset($_POST['uname'])!='') {
+		$err_uname = "Please fill in the username field";
+
+	}
+	if (!isset($_POST['pwd'])!='') {
+		$err_pwd = "Please fill in the password field";
+
+}
+}
+
+
+}
+}
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -13,18 +45,23 @@
 	<body>
 			<div id="login" class="text-center">
 			<h2>LOGIN</h2>
-			<form id="form">
+			<form id="form" action="login.php" method="post"> 
 			<div>
 				<label>
 					<span>Username: </span>
 					<input placeholder="Please enter your username" type="text" name="uname" tabindex="1" autofocus required>
+					<span class="error"><?php if(isset($err_uname)) echo $err_uname;?></span>
 				</label>
 			</div>
 			<div>
 				<label>
 					<span>Password: </span>
 					<input placeholder="Please enter your password" type="password" name="pwd" tabindex="2" required>
+					<span class="error"><?php if(isset($err_pwd)) echo $err_pwd;?></span>
 				</label>
+			</div>
+			<div>
+				<span class="error"><?php if(isset($err_cred)) echo $err_cred;?></span>
 			</div>
 			<div>
 				<button name="submit" type="submit" id="submit">Submit</button>
