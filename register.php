@@ -1,3 +1,22 @@
+<?php 
+include 'db_connect.php';
+if(isset($_POST['submit'])){
+	$uname = $_POST['uname'];
+	$fname = $_POST['fname'];
+	$pwd = sha1($_POST['pwd']);
+	$dob = $_POST['dt'];
+	$ph_no = $_POST['ph'];
+	$email = $_POST['email'];
+	$addr = $_POST['addr'];
+	$type = $_POST['type'];
+	$query = "INSERT INTO user_details(`uname` , `full_name` , `pwd` , `dob` , `ph_no` , `address` ,`email` ,`type`) VALUES('$uname' , '$fname' , '$pwd' , '$dob' ,$ph_no , '$addr' , '$email' , {$type});";
+
+	echo $query;	
+	$res = mysqli_query($h , $query) or die("Error ...".mysqli_error($h)) ;
+		
+}
+
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -12,7 +31,7 @@
 	<body>
 			<div id="login" class="text-center">
 			<h2>REGISTER</h2>
-			<form id="form">
+			<form id="form" method="post" action="register.php">
 			<div>
 				<label>
 					<span>Name: </span>
