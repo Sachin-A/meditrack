@@ -7,9 +7,8 @@
 		<link href="css/landing-page.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-		<script src="js/bootstrap.js"></script>
 		<script src="js/jquery.js"></script>
-		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
 	</head>
 
 	<body style="overflow:hidden">
@@ -24,7 +23,7 @@
 							<p class="container">View/edit patient history, log/monitor daily schedule and set reminders for daily tasks!</p>
 							<ul class="list-inline">
 								<li>
-									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-heart"> PATIENT HISTORY </i></span></a>
+									<a href="ph.php" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-heart"> PATIENT HISTORY </i></span></a>
 								</li>
 								<li>
 									<a href="#" class="btn btn-default btn-lg"><span class="network-name"><i class="fa fa-list-alt"> DAILY LOG </i></span></a>

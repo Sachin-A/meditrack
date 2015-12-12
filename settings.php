@@ -11,7 +11,7 @@
 		<script src="js/bootstrap.js"></script>
 	</head>
 
-	<body>
+	<body overflow="hidden">
 		<div class="intro-header">
 			<div class="container">
 				<div class="row">
@@ -19,8 +19,8 @@
 						<div id="index" class="intro-message">
 							<h2>MEDI TRACK</h2>
 							<hr class="intro-divider">
-							<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-heart"> ADD DOCTORS/TRACKERS </i></a>
-							<div class="collapse" id="collapseExample" aria-expanded="false">
+							<a class="btn btn-primary" role="button" data-toggle="collapse" href="#formcollapse" aria-expanded="false" aria-controls="formcollapse"><i class="fa fa-heart"> ADD DOCTORS/TRACKERS </i></a>
+							<div class="collapse" id="formcollapse" aria-expanded="false">
 								<form id="form" method="post" action="settings.php">
 								<div>
 									<label>
