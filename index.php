@@ -19,7 +19,8 @@
 							<div id="index" class="intro-message">
 							<h2>MEDI TRACK</h2>
 							<hr class="intro-divider">
-							<a href="settings.php" class="btn btn-default btn-lg" style="float:left"><i class="fa fa-cog">SETTINGS</i></a>
+							<a href="settings.php" class="btn btn-default btn-lg" style="float:left"><i class="fa fa-spin fa-cog"></i> SETTINGS </a>
+							<a href="index.php?logout=1" class="btn btn-default btn-lg" style="float:right"><i class="fa fa-sign-out"> LOG OUT </i></a>
 							<p class="container">View/edit patient history, log/monitor daily schedule and set reminders for daily tasks!</p>
 							<ul class="list-inline">
 								<li>
