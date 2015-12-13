@@ -46,13 +46,15 @@ else{
 		<link href="css/landing-page.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
+		<link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
 	</head>
 
 	<body style="overflow:hidden">
 			<div id="login" class="text-center">
-			<h2>LOGIN</h2>
+			<h2><i class="fa fa-sign-in faa-passing faa-slow animated"></i>&nbsp;&nbsp; LOGIN</h2>
 			<form id="form" action="login.php" method="post"> 
 			<div class="form-group">
 				<label>
@@ -73,6 +75,7 @@ else{
 				<span class="error"><?php if(isset($err_cred)) echo $err_cred;?></span>
 			</div>
 			</form>
+			</br>
 			<span>Please click <a href="register.php">Here</a> to register</span>
 			</div>
 	</body>

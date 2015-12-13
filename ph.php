@@ -27,13 +27,13 @@ if(isset($_POST['submit']))
 
 	
 	$q_uname = "SELECT `u_id`  , `imgs_uploaded` from user_details where uname='$uname';";
-	$res = mysqli_query($h , $q_uname);
+	$res = mysqli_query($h , $q_uname) or die("ERROR..".mysqli_error($h));
 	$arr = mysqli_fetch_array($res);
 	$filename = $uname.'_'.(string)($arr['imgs_uploaded']+1).'.png';
 	$imgs = $arr['imgs_uploaded']+1;
 
 	$query_img = "UPDATE user_details set imgs_uploaded=$imgs where uname='$uname';";
-	$res_img = mysqli_query($h,$query_img) or die("error.."); 
+	$res_img = mysqli_query($h,$query_img) or die("error..."); 
 
 	$p_id = mysqli_real_escape_string($h,$arr['u_id']);
 	
@@ -57,6 +57,8 @@ if(isset($_POST['submit']))
       <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	  <link rel="stylesheet" href="bootstrap-table.css">
+	  <link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
+	  <link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
       <script src="js/jquery.js"></script>
       <script type="text/javascript">
       var sl;
@@ -141,7 +143,7 @@ if(isset($_POST['submit']))
       <div id="login" class="text-center">
          <?php if($type!=3){ ?>
          <p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample">
-         <i class="fa fa-heart"> ADD PATIENT HISTORY </i>
+         <i class="fa fa-heart faa-pulse animated"></i>&nbsp;&nbsp; ADD PATIENT HISTORY
          </a></p>
          <div class="collapse" id="form" aria-expanded="false">
             <form id="form" method="post" action="ph.php" enctype="multipart/form-data">
@@ -198,7 +200,7 @@ if(isset($_POST['submit']))
 		 </br>
          <ul class="nav nav-pills nav-justified">
             <li role="presentation" class="active">
-               <a href="#atr" class="btn btn-primary" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="atr"><i class="fa fa-bar-chart"> BY ATTRIBUTE </i></a>
+               <a href="#atr" class="btn btn-primary" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="atr"><i class="fa fa-bar-chart faa-float animated"></i>&nbsp;&nbsp; BY ATTRIBUTE </a>
                <div class="collapse" id="atr" aria-expanded="false">
                   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                      <div class="panel panel-default">
@@ -233,7 +235,7 @@ if(isset($_POST['submit']))
                </div>
             </li>
             <li role="presentation" class="active">
-               <a href="#dat" class="btn btn-primary" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="dat"><i class="fa fa-calendar"> BY DATE </i></a>
+               <a href="#dat" class="btn btn-primary" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="dat"><i class="fa fa-calendar faa-float animated"></i>&nbsp;&nbsp; BY DATE</a>
                <div class="collapse" id="dat" aria-expanded="false">
                   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                      <div class="panel panel-default">
