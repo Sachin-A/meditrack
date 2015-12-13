@@ -2,6 +2,7 @@
 include 'db_connect.php';
 
 session_start();
+if(!isset($_SESSION['u_i'])){
 if(isset($_POST['submit'])){ 
 if(isset($_POST['uname'])  && isset($_POST['pwd']))
 {  
@@ -35,6 +36,12 @@ else{
 
 
 }
+}
+}
+
+else
+{
+	header("Location:/meditrack/");
 }
 ?>
 <!DOCTYPE HTML>
