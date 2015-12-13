@@ -67,12 +67,12 @@ if(isset($_POST['submit']))
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
 	</head>
-	<body style="overflow:hidden;">
-		<div class="intro-header">
+	<body>
+		<div class="intro-header" style="background-repeat:repeat">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<div id="index" class="intro-message">
+						<div id="index" class="intro-message" style="padding-top:3%;padding-bottom:30%;">
 							<h1><i class="fa fa-heart faa-pulse faa-fast animated"></i> MEDI TRACK</h1>
 							<hr class="intro-divider">
 							<a class="btn btn-primary" role="button" data-toggle="collapse" href="#formcollapse" aria-expanded="false" aria-controls="formcollapse"><i class="fa fa-user-md faa-tada animated"></i>&nbsp;&nbsp ADD DOCTORS/TRACKERS &nbsp;&nbsp<i class="fa fa-user faa-tada animated"></i></a>
@@ -81,7 +81,7 @@ if(isset($_POST['submit']))
 								<div>
 									<label>
 										<span>Username: </span>
-										<input placeholder="Please enter your username" class="form-control form-control-warning" type="text" name="uname" tabindex="1" autofocus required>
+										<input placeholder="Enter your username" class="form-control form-control-warning" type="text" name="uname" tabindex="1" autofocus required>
 									</label>
 								</div>
 								<div>

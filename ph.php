@@ -126,7 +126,11 @@ if(isset($_POST['submit']))
 	  </script>
    </head>
    <body>
-      <div id="login" class="text-center">
+	  <div class="intro-header" style="background-repeat:repeat" >
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div id="index" class="intro-message" style="padding-top:3%;padding-bottom:40%;">
          <?php if($type!=3){ ?>
          <p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample">
          <i class="fa fa-heart faa-pulse animated"></i>&nbsp;&nbsp; ADD PATIENT HISTORY
@@ -257,5 +261,9 @@ if(isset($_POST['submit']))
             </li>
          </ul>
       </div>
+	  </div>
+	  </div>
+	  </div>
+	  </div>
    </body>
 </html>

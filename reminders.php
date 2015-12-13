@@ -67,8 +67,12 @@ if(isset($_POST['submit']))
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
 	</head>
-	<body style="overflow:hidden;" class="text-center">
-		<div class="container">
+	<body>
+		<div class="intro-header" style="background-repeat:repeat">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="index" class="intro-message" style="padding-top:0%;padding-bottom:0%;">
 			<h1><i class="fa fa-heart faa-pulse faa-fast animated"></i> MEDI TRACK </h1>
 			<hr class="intro-divider">
 			<h1><a class="btn btn-primary" style="font-size:18px;" role="button" data-toggle="collapse" href="#formcollapse" aria-expanded="false" aria-controls="formcollapse"><i class="fa fa-list faa-horizontal animated"></i>&nbsp;&nbsp  ADD REMINDERS </a></h1>
@@ -111,6 +115,11 @@ if(isset($_POST['submit']))
 			<div class="panel panel-success">
 				<div class="panel-body">Panel content</div>
 				<div class="panel-footer">Panel footer</div>
+			</div>
+		</div>
+			</div>
+					</div>
+				</div>
 			</div>
 		</div>	
 	</body>

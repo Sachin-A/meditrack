@@ -34,9 +34,15 @@ if(isset($_POST['submit'])){
 	</head>
 
 	<body>
-			<div id="login" class="text-center">
+			<div class="intro-header" style="background-repeat:repeat">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="index" class="intro-message" style="padding-top:0%;padding-bottom:0%;">
+						<h1><i class="fa fa-heart faa-pulse faa-fast animated"></i> MEDI TRACK</h1>
+							<hr class="intro-divider">
 			<h2><i class="fa fa-user faa-float faa-fast animated"></i> REGISTER </h2>
-			<form id="form" method="post" action="register.php">
+			<form id="form" method="post" action="register.php" class="form-horizontal">
 			<div class="form-group">
 				<label>
 					<span>Name: </span>
@@ -58,7 +64,7 @@ if(isset($_POST['submit'])){
 			<div class="form-group">
 				<label>
 					<span>Date of Birth: </span>
-					<input type="date" name="dt" tabindex="4" required>
+					<input type="date" name="dt" class="form-control" tabindex="4" required>
 				</label>
 			</div>
 			<div class="form-group">
@@ -94,5 +100,10 @@ if(isset($_POST['submit'])){
 			</br>
 			<span>Please click <a href="login.php">Here</a> to login</span>
 			</div>
+			</div>
+	  </div>
+	  </div>
+	  </div>
+	  </div>
 	</body>
 </html>

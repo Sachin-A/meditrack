@@ -37,12 +37,18 @@
 		});
 		</script>
 	</head>
-	<body class="text-center";>
+	<body>
+		<div class="intro-header" style="background-repeat:repeat; color:white;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="index" class="intro-message" style="padding-top:3%;padding-bottom:20%;">
 						<p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#form" aria-expanded="false" aria-controls="collapseExample">
 						 <i class="fa fa-calendar faa-float faa-fast animated"></i> ADD DAILY LOG
 						 </a></p>
+						 </br></br>
 						 <div class="collapse" id="form" aria-expanded="false">
-							<form id="form" method="post" action="register.php">
+							<form id="form" method="post" action="register.php" class="form-horizontal">
 							   <div class="form-group">
 								  <label>
 								  <span>Username: </span>
@@ -52,7 +58,7 @@
 							   <div class="form-group">
 								  <label>
 								  <span>Date: </span>
-								  <input type="date" name="dt" tabindex="2" required>
+								  <input type="date" name="dt" tabindex="2" class="form-control" required>
 								  </label>
 							   </div>
 							   <div>
@@ -133,13 +139,74 @@
 								  <textarea placeholder="Any other pain experienced?" name="comm" class="form-control" tabindex="11" required></textarea>
 								  </label>
 							    </div>
+								<div>
 							    <label class="file">
 							    <input type="file" id="file">
 							    <span class="file-custom"></span>
 							    </label>
+								</div>
+								<div>
+								<label>
 							    <button name="submit" type="submit" class="btn btn-primary" id="submit">Submit</button>
+								</label>
+								</div>
 							 </form>
 						  </div>
-						</br>
+						  <table class="table table-bordered">
+							<tr style="background-color:#34495E; color:#1B1E25">
+						    <th>Data</th>
+							<th>Data</th>
+							<th>Data</th>
+							<th>Data</th>
+							<th>Data</th>
+							<th>Data</th>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							<td>Data</td>
+							</tr>
+						  </table>
+						  </br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</body>
 </html>
