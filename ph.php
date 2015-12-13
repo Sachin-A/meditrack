@@ -146,7 +146,7 @@ if(isset($_POST['submit']))
                <div class="form-group">
                   <label>
                   <span>Date: </span>
-                  <input type="date" name="dt" tabindex="2" required>
+                  <input style="color:grey" type="date" name="dt" tabindex="2" required>
                   </label>
                </div>
                <div class="form-group">
@@ -237,8 +237,25 @@ if(isset($_POST['submit']))
                            </h4>
                         </div>
                         <div id="date1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h1">
-                           <div class="panel-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                           <div class="panel-body" style="color:black">
+                              <table class="table table-bordered">
+							<tr style="background-color:#34495E; color:#1B1E25">
+						    <th>Date</th>
+							<th>Blood Sugar</th>
+							<th>Heart Rate</th>
+							<th>Symptoms</th>
+							<th>LDL Cholestrol</th>
+							<th>Triglycerides</th>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>12-12-15</td>
+							<td>123</td>
+							<td>140/70 mmhg</td>
+							<td>Facial Flushing</td>
+							<td>110 mg/dl</td>
+							<td>117 mg/dl</td>
+							</tr>
+						  </table>
                            </div>
                         </div>
                      </div>
@@ -251,9 +268,26 @@ if(isset($_POST['submit']))
                            </h4>
                         </div>
                         <div id="date2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h2">
-                           <div class="panel-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                           </div>
+                           <div class="panel-body" style="color:black">
+								 <table class="table table-bordered">
+							<tr style="background-color:#34495E; color:#1B1E25">
+						    <th>Date</th>
+							<th>Blood Sugar</th>
+							<th>Heart Rate</th>
+							<th>Symptoms</th>
+							<th>LDL Cholestrol</th>
+							<th>Triglycerides</th>
+							</tr>
+							<tr style="background-color:#34495E">
+						    <td>16-12-15</td>
+							<td>137</td>
+							<td>189/80 mmhg</td>
+							<td>Allergies</td>
+							<td>140 mg/dl</td>
+							<td>170 mg/dl</td>
+							</tr>
+						  </table>
+							</div>
                         </div>
                      </div>
                   </div>

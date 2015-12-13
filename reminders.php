@@ -89,7 +89,7 @@ if(isset($_POST['submit']))
 				<div>
 					<label>
 						<span>Remainder: </span>
-						<input placeholder="Please enter your username" class="form-control form-control-warning" type="text" name="rem" tabindex="2" autofocus required>
+						<input placeholder="Enter remainder" class="form-control form-control-warning" type="text" name="rem" tabindex="2" autofocus required>
 					</label>
 				</div>
 				<div>

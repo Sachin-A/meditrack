@@ -61,7 +61,7 @@ else{
 						<h1><i class="fa fa-heart faa-pulse faa-fast animated"></i> MEDI TRACK</h1>
 							<hr class="intro-divider">
 			<h2><i class="fa fa-sign-in faa-passing faa-slow animated"></i>&nbsp;&nbsp; LOGIN</h2>
-			<form id="form" action="login.php" method="post"> 
+			<form id="form" action="login.php" method="post" style="color:black"> 
 			<div class="form-group">
 				<label>
 					<span>Username: </span>
