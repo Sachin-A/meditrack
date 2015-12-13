@@ -1,56 +1,25 @@
 <?php
 include 'db_connect.php';
 session_start();
-include 'chck.php';
+
 if(isset($_POST['submit']))
 {
-	if($_POST['uname']!='')
-	{	
+	$uname = $_POST['uname'];
+	$remainder = $_POST['rem'];
+	$d_time = $_POST['time'];
 
-		$uname = mysqli_real_escape_string($h ,$_POST['uname']);
-		$type = mysqli_real_escape_string($h ,$_POST['type']);
-		$query1	= "SELECT `u_id` from user_details where uname='$uname' and type = $type;";
-		$res1= mysqli_query($h,$query1) or die("Error");
-		$rows1 = mysqli_num_rows($res1);
-		$arr = mysqli_fetch_array($res1);
-		$user = $_SESSION['u_i'];
-				
+	$query1 = "SELECT `u_id` from user_details where uname='$uname';";
+	$r1 = mysqli_query($h,$query1) or die("error....");
 
-		if($rows1!=0)
-		{	
-			
-			$uid=$arr['u_id'];
-			if(chck($uid , $_POST['type'] , $user , $h)==1)
-			{
-				echo "<span style='font-size:20px;color:red;font-weight:bold;'>This person already tracks you</span>";
-				
-				
-			}
-			
-			else				
-				$person = ($type==2)?"doctors":"u_trackers";
-		
-		}
-		
-		else
-			{
-				echo "Please enter the username of a valid doctor or a tracker";
-			}
-			
-		if(isset($person))
-			{	
-				$query2 = "UPDATE user_details SET $person=CONCAT($person,'$uid".";') WHERE u_id=$user;";
-				$query3 = "UPDATE user_details SET patients = CONCAT(patients ,'$user".";') WHERE u_id=$uid;";
-				$res2= mysqli_query($h,$query2) or die("Error in query ...".mysqli_error($h));
-				$res3=mysqli_query($h,$query3) or die("Error in Query..");
-				echo "You have successfully added ".$uname." to track you !";
-			}	
-		}
-       else 
-       	echo "Please enter in a proper username.";
-	}
+	$arr1=mysqli_fetch_array($r1);
+	$u_id = $arr1['u_id'];
+
+	$query_ins = "INSERT INTO reminders values($u_id , '$remainder' , '$d_time');";
 	
+	$r_ins = mysqli_query($h, $query_ins) or die("Error.....");
+	echo "reminder successfully added!";
 
+}
 
 ?>
 <!DOCTYPE HTML>
@@ -100,18 +69,23 @@ if(isset($_POST['submit']))
 				</form>
 				</br>
 			</div>
-			<div class="panel panel-success">
-				<div class="panel-body">Reminder 1</div>
-				<div class="panel-footer">Time</div>
-			</div>
-			<div class="panel panel-success">
-				<div class="panel-body">Panel content</div>
-				<div class="panel-footer">Panel footer</div>
-			</div>
-			<div class="panel panel-success">
-				<div class="panel-body">Panel content</div>
-				<div class="panel-footer">Panel footer</div>
-			</div>
+			
+<?php 
+			if(isset($_SESSION['u_id']))
+				$id=$_SESSION['u_id'];
+			else
+				$id = $_SESSION['u_i'];
+		$query_loop = "SELECT * FROM reminders where u_id = $id;";
+		$r_loop = mysqli_query($h,$query_loop) or die("error..");
+		
+		while($arrl = mysqli_fetch_array($r_loop))
+		{
+			echo '<div class="panel panel-success">
+				  	<div class="panel-body">'.$arrl["description"].'</div>
+				  	<div class="panel-footer">'.$arrl["alloted_time"].'</div>
+				</div>';
+		}
+	?>		
 		</div>	
 	</body>
 </html>
