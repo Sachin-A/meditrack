@@ -1,3 +1,30 @@
+<?php
+include 'db_connect.php';
+
+if(isset($_POST['submit']))
+{	$uname = $_POST['uname'];
+	$dt = $_POST['dt'];
+	$h_b = $_POST['bf'];
+	$mt = $_POST['mtabl'];
+	$h_l = $_POST['lu'];
+	$at= $_POST['atabl'];
+	$h_d = $_POST['dn'];
+	$bs = $_POST['bs'];
+	$bp = $_POST['bp'];
+	
+	$q1 = "SELECT `u_id` from user_details where uname='$uname';";
+	$r1=mysqli_query($h,$q1);
+	$arr= mysqli_fetch_array($r1);
+	$id = $arr['u_id'];
+
+	$query = "INSERT INTO daily_log values($id , $h_b,$mt,$h_l,$at ,$h_d , $bs,$bp );";
+	$r = mysqli_query($h, $query);
+	echo "daily log updated!"
+	//to be validated
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -12,30 +39,6 @@
 		<script src="js/jquery.js"></script>
 		<script src="table/build/table-edits.min.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<script>
-		$("table tr").editable({
-		  // enable keyboard support
-		  keyboard: true,
-		  // double click to start editing
-		  dblclick: true,
-		  // enable edit buttons
-		  button: true,
-		  // CSS selector for edit buttons
-		  buttonSelector: ".edit",
-		  // uses select dropdown instead of input field
-		  dropdowns: {},
-		  // maintains column width when editing
-		  maintainWidth: true,
-		  // callbacks for edit, save and cancel actions
-		  edit: function(values) {},
-		  save: function(values) {},
-		  cancel: function(values) {}
-		  save: function(values) {
-		  var id = $(this).data('t');
-		  $.post('/api/object/' + id, values);
-		}
-		});
-		</script>
 	</head>
 	<body>
 		<div class="intro-header" style="background-repeat:repeat; color:white;">
@@ -48,7 +51,7 @@
 						 </a></p>
 						 </br></br>
 						 <div class="collapse" id="form" aria-expanded="false">
-							<form id="form" method="post" action="register.php" class="form-horizontal">
+							<form id="form" method="post" action="dailylog.php">
 							   <div class="form-group">
 								  <label>
 								  <span>Username: </span>
@@ -67,17 +70,17 @@
 										<select name="bf" tabindex="3" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">Partially</option>
+											<option value="3">Partially</option>
 										</select>
 									</label>
 								</div>
 								<div>
 									<label>
-										<span>Took morning tablets & injection: </span>
+										<span>Took morning tablets & injection?: </span>
 										<select name="mtabl" tabindex="4" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">Partially</option>
+											<option value="3">Partially</option>
 										</select>
 									</label>
 								</div>
@@ -87,7 +90,7 @@
 										<select name="lu" tabindex="5" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">Partially</option>
+											<option value="3">Partially</option>
 										</select>
 									</label>
 								</div>
@@ -97,7 +100,7 @@
 										<select name="atabl" tabindex="6" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">Partially</option>
+											<option value="3">Partially</option>
 										</select>
 									</label>
 								</div>
@@ -107,7 +110,7 @@
 										<select name="dn" tabindex="7" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">Partially</option>
+											<option value="3">Partially</option>
 										</select>
 									</label>
 								</div>
@@ -120,7 +123,7 @@
 							   <div class="form-group">
 								  <label>
 								  <span>Blood Pressure: </span>
-								  <input type="text" name="bs" class="form-control" tabindex="9" autofocus required>
+								  <input type="text" name="bp" class="form-control" tabindex="9" autofocus required>
 								  </label>
 							   </div>
 							   <div>
@@ -129,7 +132,7 @@
 										<select name="dn" tabindex="10" class="form-control" required>
 											<option value="1">Yes</option>
 											<option value="2">No</option>
-											<option value="2">With Difficulty</option>
+											<option value="3">With Difficulty</option>
 										</select>
 									</label>
 								</div>
@@ -141,7 +144,7 @@
 							    </div>
 								<div>
 							    <label class="file">
-							    <input type="file" id="file">
+							    <input type="file" id="file" name='file_upload'>
 							    <span class="file-custom"></span>
 							    </label>
 								</div>
@@ -152,6 +155,7 @@
 								</div>
 							 </form>
 						  </div>
+<<<<<<< HEAD
 						  <table class="table table-bordered">
 							<tr style="background-color:#34495E; color:#1B1E25">
 						    <th>Data</th>
@@ -208,5 +212,6 @@
 				</div>
 			</div>
 		</div>	
+		</br>
 	</body>
 </html>

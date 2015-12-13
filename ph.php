@@ -1,5 +1,6 @@
 <?php 
 include 'db_connect.php';
+include 'stats_json.php';
 session_start();
 
 $id=$_SESSION['u_i'];
@@ -7,6 +8,8 @@ $id=$_SESSION['u_i'];
 	$r = mysqli_query($h,$q) or die("Error....");
 	$arr_T = mysqli_fetch_array($r);
 	$type = $arr_T['type'];
+if(isset($_GET['u_name']))
+$uname=$_GET['u_name'];	
 if(!isset($_SESSION['u_i']))
 	header("Location:/meditrack/land.html");
 
@@ -57,10 +60,15 @@ if(isset($_POST['submit']))
 	  <link rel="stylesheet" href="font-awesome/font-awesome-animation/vendor/font-awesome-animation.css">
 	  <link rel="stylesheet" href="font-awesome/font-awesome-animation/dist/font-awesome-animation.css">
       <script src="js/jquery.js"></script>
+      <script type="text/javascript">
+      var sl;
+      var bpl;
+      </script>
       <script src="js/bootstrap.js"></script>
 	  <script src="bootstrap-table.js"></script>
 	  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	  
 	  <script type="text/javascript">
 			// Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart', 'bar']});
@@ -77,13 +85,21 @@ if(isset($_POST['submit']))
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Date');
       data.addColumn('number', 'Sugar Level');
-      data.addRows([
-        ['12-12-15', 33],
-        ['12-12-15', 145],
-        ['12-12-15', 123], 
-        ['12-12-15', 112],
-        ['12-12-15', 213]
-      ]);
+      
+      var sl;
+
+      
+      sl= <?php 
+
+      		echo jsonize( $uname, 1 , $h);
+
+
+      		?>
+
+       var bpl;
+       bpl = <?php   echo jsonize($uname, 2 , $h); ?> ;
+      
+      data.addRows(sl);
 
       // Set chart options
       var options = {'title':'Blood Sugar Level Data of Last 10 days(Recommended level is 80-140)',
@@ -94,12 +110,10 @@ if(isset($_POST['submit']))
       chart.draw(data, options);
 
         var data2 = new google.visualization.arrayToDataTable([
-          ['BP', 'Systolic', 'Diastolic'],
-          ['12-12-15', 80, 23.3],
-          ['12-12-15', 24, 4.5],
-          ['12-12-15', 30, 14.3],
-          ['12-12-15', 50, 0.9],
-          ['12-12-15', 60, 13.1]
+          ['date','BP'],
+          bpl[0],
+          bpl[1],
+          bpl[2]
         ]);
 
         var options2 = {
@@ -124,7 +138,7 @@ if(isset($_POST['submit']))
       chart2.draw(data2, options2);
     };
 	  </script>
-   </head>
+	    </head>
    <body>
 	  <div class="intro-header" style="background-repeat:repeat" >
 				<div class="container">
